@@ -7,3 +7,7 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
+ 
+<!-- If you want to link to an action in the same controller, 
+     you don't need to specify the :controller option -->
+<%= link_to 'Back', articles_path %>
