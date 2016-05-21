@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
   	@article = Article.new
   end
 
+  def edit
+  	@article = Article.find(params[:id])
+  end
+
 	def create
 		@article = Article.new(article_params)
  
@@ -19,6 +23,20 @@ class ArticlesController < ApplicationController
 	  else
 	  	render 'new'
 	  end
+	end
+
+	def update
+		@article = Article.find(params[:id])
+
+		# Note: You don't need to pass all attributes to update. For example, 
+		# if you'd call @article.update(title: 'A new title') Rails would only 
+		# update the title attribute, leaving all other attributes untouched.
+
+		if @article.update(article_params)
+			redirect_to @article
+		else
+			render 'edit'
+		end
 	end
 
 	private

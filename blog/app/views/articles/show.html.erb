@@ -8,6 +8,7 @@
   <%= @article.text %>
 </p>
  
+<%= link_to 'Edit', edit_article_path(@article) %>
 <!-- If you want to link to an action in the same controller, 
      you don't need to specify the :controller option -->
 <%= link_to 'Back', articles_path %>
