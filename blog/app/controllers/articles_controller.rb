@@ -1,11 +1,11 @@
-class ArticlesController < ApplicationController
-	def show
-		@article = Article.find(params[:id])
-	end
-	
+class ArticlesController < ApplicationController	
 	def index
     @articles = Article.all
   end
+
+	def show
+		@article = Article.find(params[:id])
+	end
 
   def new
   	@article = Article.new
@@ -37,6 +37,18 @@ class ArticlesController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	# The delete routing method should be used for routes that destroy resources. 
+	# If this was left as a typical get route, it could be possible for people to 
+	# craft malicious URLs like this:
+	#   <a href='http://example.com/articles/1/destroy'>look at this cat!</a>
+
+	def destroy
+	  @article = Article.find(params[:id])
+	  @article.destroy
+	 
+	  redirect_to articles_path
 	end
 
 	private
