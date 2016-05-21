@@ -9,34 +9,15 @@
 </p>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<!-- will render the partial in app/views/comments/_comment.html.erb once for 
+each comment that is in the @article.comments collection. As the render method 
+iterates over the @article.comments collection, it assigns each comment to a 
+local variable named the same as the partial, in this case comment which is 
+then available in the partial for us to show. -->
+<%= render @article.comments %>
 
 <h2>Add a comment:</h2>
-<!-- The form_for call here uses an array, which will build a nested route, 
-     such as /articles/1/comments. -->
-<%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form' %>
  
 <%= link_to 'Edit', edit_article_path(@article) %>
 <!-- If you want to link to an action in the same controller, 
