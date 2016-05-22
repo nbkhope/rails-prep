@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+
+	# require authentication only to destroy a comment
+	http_basic_authenticate_with name: "nobody", password: "secret", 
+															 only: :destroy
+
 	# Create a new comment for an article
 	def create
 		@article = Article.find(params[:article_id])
