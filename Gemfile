@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 # To generate documentation
-gem 'redcarpet', '~> 3.1.2'
+gem 'redcarpet', '~> 3.5.1'
 
 # In order for the app to be deployed to Heroku
 gem 'rails_12factor', group: :production
